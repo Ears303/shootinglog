@@ -150,7 +150,7 @@ const SESSION_COMMON = [
   F('distance_m', 'Distance (m)', 'number'), F('rounds_fired', 'Rounds fired', 'number')
 ];
 const SESSION_SCORE = [F('score', 'Score', 'number'), F('max_score', 'Max possible', 'number'), F('x_count', 'X / V count', 'number')];
-const SESSION_COMP = [F('competition_name', 'Competition name'), F('discipline', 'Discipline'), F('grade_or_class', 'Grade / class'), F('placing', 'Placing'), F('field_size', 'Field size', 'number')];
+const SESSION_COMP = [F('competition_name', 'Competition name'), F('discipline', 'Discipline'), F('grade_or_class', 'Grade / class'), F('finish_place', 'Placing'), F('field_size', 'Field size', 'number')];
 const SESSION_TEST = [
   F('test_purpose', 'Test purpose', 'select', { options: TEST_PURPOSES }), F('shots_in_group', 'Shots in group', 'number'),
   F('group_size_mm', 'Group size (mm)', 'number'), F('group_size_moa', 'Group size (MOA)', 'number'),
@@ -396,7 +396,7 @@ function sessionCard(s) {
   const ammo = state.rimfire.find(a => a.id === s.rimfire_ammo_id) || state.centrefire.find(a => a.id === s.centrefire_ammo_id);
   const bits = [];
   if (s.score != null) bits.push(`Score <b class="stat">${num(s.score, 1)}${s.max_score ? '/' + num(s.max_score) : ''}${s.x_count ? ' ' + s.x_count + 'X' : ''}</b>`);
-  if (s.session_type === 'competition' && s.placing) bits.push(`Placing ${esc(s.placing)}${s.field_size ? ' of ' + s.field_size : ''}`);
+  if (s.session_type === 'competition' && s.finish_place) bits.push(`Placing ${esc(s.finish_place)}${s.field_size ? ' of ' + s.field_size : ''}`);
   if (s.group_size_mm != null) bits.push(`Group <b class="stat">${num(s.group_size_mm, 1)} mm</b>`);
   if (s.avg_velocity_fps != null) bits.push(`${num(s.avg_velocity_fps)} fps${s.standard_deviation_fps != null ? ' SD ' + num(s.standard_deviation_fps, 1) : ''}`);
   const title = s.title || s.competition_name || s.test_purpose || '';
