@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shooting Manager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="topbar" hidden>
+  <h1>Shooting Manager</h1>
+  <nav id="tabs">
+    <button data-tab="sessions" class="active">Sessions</button>
+    <button data-tab="rifles">Rifles</button>
+    <button data-tab="ammo">Ammo</button>
+  </nav>
+  <button id="signout" class="ghost">Sign out</button>
+</header>
+<main id="app"></main>
+<div id="modal" class="modal" hidden><div class="modal-card" id="modal-card"></div></div>
+<div id="toast" class="toast" hidden></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
